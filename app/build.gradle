@@ -32,7 +32,6 @@ android {
 
         staging {
             resValue "string", "app_name1", "Linh(staging)"
-            signingConfig signingConfigs.debug
             buildConfigField "String", 'BASE_URL', '"https://youtube.com"'
             applicationIdSuffix ".staging"
             debuggable true
@@ -41,7 +40,6 @@ android {
 
         release {
             resValue "string", "app_name1", "Linh"
-            signingConfig signingConfigs.debug
             buildConfigField "String", 'BASE_URL', '"https://facebook.com"'
             debuggable false
             minifyEnabled true
@@ -59,10 +57,6 @@ android {
         resources {
             excludes += '/META-INF/{AL2.0,LGPL2.1}'
         }
-    }
-
-    defaultConfig {
-        resourceConfigurations += ["vi", "en-rUS"]
     }
 }
 

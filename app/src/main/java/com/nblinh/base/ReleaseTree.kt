@@ -4,12 +4,11 @@ import android.util.Log
 import timber.log.Timber
 
 class ReleaseTree : Timber.Tree() {
-    protected override fun log(
+    override fun log(
         priority: Int, tag: String?,
         message: String, t: Throwable?
     ) {
-        if (priority == Log.ERROR || priority == Log.WARN) {
-            //log to your Log server
-        }
+        if (priority != Log.ERROR && priority != Log.WARN) return
+        //log to your Log server
     }
 }
