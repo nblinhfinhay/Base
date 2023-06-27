@@ -1,0 +1,79 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.nblinh.base'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.nblinh.base"
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+        signingConfig signingConfigs.debug
+    }
+
+    buildTypes {
+        debug {
+            resValue "string", "app_name1", "Linh(debug)"
+            buildConfigField "String", 'BASE_URL', '"https://twitter.com"'
+            applicationIdSuffix ".debug"
+            debuggable true
+            minifyEnabled false
+        }
+
+        staging {
+            resValue "string", "app_name1", "Linh(staging)"
+            signingConfig signingConfigs.debug
+            buildConfigField "String", 'BASE_URL', '"https://youtube.com"'
+            applicationIdSuffix ".staging"
+            debuggable true
+            minifyEnabled false
+        }
+
+        release {
+            resValue "string", "app_name1", "Linh"
+            signingConfig signingConfigs.debug
+            buildConfigField "String", 'BASE_URL', '"https://facebook.com"'
+            debuggable false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+
+    defaultConfig {
+        resourceConfigurations += ["vi", "en-rUS"]
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.10.1'
+    implementation platform('org.jetbrains.kotlin:kotlin-bom:1.8.0')
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.6.1'
+    implementation 'androidx.appcompat:appcompat:1.7.0-alpha02'
+    implementation 'com.jakewharton.timber:timber:5.0.1'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
