@@ -21,8 +21,12 @@ class MainActivity : BaseActivity() {
         findViewById<View>(R.id.btnTheme2).setOnClickListener {
             applyTheme(R.style.Theme_Dark)
         }
-        findViewById<View>(R.id.btnGoToNewActivity).setOnClickListener {
-            startActivity(Intent(this, NewActivity::class.java))
+
+        findViewById<View>(R.id.btnGoToThemeLanguageActivity).setOnClickListener {
+            startActivity(Intent(this, ThemeLanguageActivity::class.java))
+        }
+        findViewById<View>(R.id.btnGoToCameraActivity).setOnClickListener {
+            startActivity(Intent(this, CameraActivity::class.java))
         }
     }
 }

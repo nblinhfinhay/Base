@@ -6,13 +6,13 @@ import androidx.appcompat.widget.AppCompatTextView
 import com.nblinh.base.R
 import com.nblinh.base.base.BaseActivity
 
-class NewActivity : BaseActivity() {
+class ThemeLanguageActivity : BaseActivity() {
 
     private lateinit var tvDemo: AppCompatTextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_new)
+        setContentView(R.layout.activity_theme_language)
         tvDemo = findViewById(R.id.tvDemo)
         findViewById<View>(R.id.btnTheme1).setOnClickListener {
             applyTheme(R.style.Theme_Light)

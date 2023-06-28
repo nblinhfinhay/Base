@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,20 +31,26 @@
                 android:text="Theme 2" />
         </LinearLayout>
 
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnGoToThemeLanguageActivity"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Theme Language Activity" />
+            android:gravity="center_horizontal">
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnGoToCameraActivity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Camera Activity" />
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnVietNam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="VIET NAM" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnEnglish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="English" />
+
+        </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvDemo"
@@ -52,6 +60,7 @@
             android:layout_marginTop="24dp"
             android:text="@string/my_name"
             android:textSize="20sp" />
+
     </LinearLayout>
 
 </ScrollView>
