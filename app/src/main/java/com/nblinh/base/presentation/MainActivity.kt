@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
 import com.nblinh.base.R
 import com.nblinh.base.base.BaseActivity
+import com.nblinh.base.sample.github_project_list.presentation.GithubProjectsActivity
 
 class MainActivity : BaseActivity() {
     private lateinit var tvDemo: AppCompatTextView
@@ -27,6 +28,10 @@ class MainActivity : BaseActivity() {
         }
         findViewById<View>(R.id.btnGoToCameraActivity).setOnClickListener {
             startActivity(Intent(this, CameraActivity::class.java))
+        } 
+
+        findViewById<View>(R.id.btnGoToAPIActivity).setOnClickListener {
+            startActivity(Intent(this, GithubProjectsActivity::class.java))
         }
     }
 }

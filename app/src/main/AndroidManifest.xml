@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
     <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
     <uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
@@ -29,6 +30,8 @@
         android:localeConfig="@xml/locales_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:usesCleartextTraffic="true"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/Theme.Light"
         tools:ignore="UnusedAttribute">
 
@@ -46,6 +49,10 @@
 
         <activity
             android:name=".presentation.CameraActivity"
+            android:theme="@style/Theme.Light" />
+
+        <activity
+            android:name=".sample.github_project_list.presentation.GithubProjectsActivity"
             android:theme="@style/Theme.Light" />
 
         <activity
