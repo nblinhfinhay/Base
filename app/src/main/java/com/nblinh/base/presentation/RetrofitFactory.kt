@@ -1,4 +1,4 @@
-package com.nblinh.base.sample.github_project_list.repository.api
+package com.nblinh.base.presentation
 
 import retrofit2.Retrofit
 

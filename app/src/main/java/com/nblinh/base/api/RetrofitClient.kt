@@ -1,7 +1,7 @@
 package com.nblinh.base.api
 
 import com.nblinh.base.BuildConfig
-import com.nblinh.base.sample.github_project_list.repository.api.GithubAPI
+import com.nblinh.base.data.remote.api.AuthService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -26,9 +26,9 @@ object RetrofitClient {
             .addConverterFactory(GsonConverterFactory.create())
     }
 
-    val apiInterface: GithubAPI by lazy {
+    val apiInterface: AuthService by lazy {
         retrofitClient
             .build()
-            .create(GithubAPI::class.java)
+            .create(AuthService::class.java)
     }
 }

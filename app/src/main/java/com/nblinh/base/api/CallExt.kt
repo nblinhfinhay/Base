@@ -3,34 +3,34 @@ package com.nblinh.base.api
 import org.json.JSONObject
 import retrofit2.Call
 import java.io.IOException
-import java.lang.Exception
 
-fun <T, R : BaseResponse<T>> Call<R>.invokeApi(): Result<T> {
+fun <T, API : BaseResponse<T>, R> Call<API>.invokeApi(block: (API) -> R): R {
     try {
         val response = this.execute()
         if (response.isSuccessful) {
-            val body: R = response.body() ?: return Result.UnknownError
-            return if (body.isSuccess()) {
-                Result.Success(body.data)
+            val body: API = response.body() ?: throw APIException(APIException.UNKNOWN_ERROR)
+            if (body.isSuccess()) {
+                return block(body)
             } else {
-                Result.ServerError(body.errorCode, body.message)
+                throw APIException(body.errorCode, body.message)
             }
         } else {
             val errorBody = response.errorBody()?.string()
-            if (errorBody.isNullOrEmpty().not()) {
-                val errorJson = JSONObject(errorBody!!)
-                return Result.ServerError(
-                    errorJson.getString("error_code"),
-                    errorJson.getString("message")
+            if (!errorBody.isNullOrEmpty()) {
+                val errorJson = JSONObject(errorBody)
+                throw APIException(
+                    errorJson.getString(BaseResponseKey.ERROR_CODE_KEY),
+                    errorJson.getString(BaseResponseKey.STATUS_KEY)
                 )
             }
-            return Result.ServerError(response.errorBody().toString(), response.message())
+
+            throw APIException(response.errorBody().toString(), response.message())
         }
     } catch (e: Exception) {
-        return if(e is IOException) {
-            Result.NetWorkError
+        if (e is IOException) {
+            throw APIException(APIException.NETWORK_ERROR, e)
         } else {
-            Result.UnknownError
+            throw APIException(APIException.UNKNOWN_ERROR)
         }
     }
 }

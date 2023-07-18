@@ -28,11 +28,11 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name1"
         android:localeConfig="@xml/locales_config"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:usesCleartextTraffic="true"
-        android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/Theme.Light"
+        android:usesCleartextTraffic="true"
         tools:ignore="UnusedAttribute">
 
         <activity
@@ -51,13 +51,9 @@
             android:name=".presentation.CameraActivity"
             android:theme="@style/Theme.Light" />
 
-        <activity
-            android:name=".sample.github_project_list.presentation.GithubProjectsActivity"
-            android:theme="@style/Theme.Light" />
+        <activity android:name=".presentation.APIActivity" />
 
-        <activity
-            android:name=".presentation.ThemeLanguageActivity"
-            android:theme="@style/Theme.Light" />
+        <activity android:name=".presentation.ThemeLanguageActivity" />
 
         <!--        for locale-->
         <service
@@ -76,7 +72,7 @@
             android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"/>
+                android:resource="@xml/file_paths" />
         </provider>
 
     </application>
