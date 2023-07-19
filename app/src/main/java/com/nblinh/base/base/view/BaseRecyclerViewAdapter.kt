@@ -58,14 +58,43 @@ abstract class BaseRecyclerViewAdapter(context: Context? = null) :
         mDataSet.add(item)
     }
 
+    fun addItemAtIndex(item: Any?, index: Int) {
+        mDataSet.add(index, item)
+        if (index <= mDataSet.size - 1) {
+            mDataSet.add(index, item)
+        } else {
+            mDataSet.add(item)
+        }
+    }
+
+    fun addItems(items: List<Any?>) {
+        mDataSet.addAll(items)
+    }
+
+    fun addItemsAtIndex(items: List<Any?>, index: Int) {
+        mDataSet.addAll(index, items)
+    }
+
+    fun removeItemAtIndex(index: Int): Any? {
+        return if (index >= 0 && index <= mDataSet.size - 1) {
+            mDataSet.removeAt(index)
+        } else {
+            null
+        }
+    }
+
+    fun updateItemAtIndex(index: Int, item: Any?) {
+        if (index >= 0 && index <= mDataSet.size - 1) {
+            mDataSet[index] = item
+        }
+    }
+
+
     fun addItemAndNotify(item: Any?) {
         mDataSet.add(item)
         notifyItemInserted(mDataSet.size - 1)
     }
 
-    open fun addItems(items: List<Any?>) {
-        mDataSet.addAll(items)
-    }
 
     fun addItemsAndNotify(items: List<Any?>) {
         val currentSize = mDataSet.size
@@ -73,27 +102,50 @@ abstract class BaseRecyclerViewAdapter(context: Context? = null) :
         notifyItemRangeInserted(currentSize, items.size)
     }
 
-    fun addItemAtIndex(item: Any?, index: Int) {
-        mDataSet.add(index, item)
+    fun addItemAtIndexAndNotify(item: Any?, index: Int) {
+        if (index <= mDataSet.size - 1) {
+            mDataSet.add(index, item)
+            notifyItemInserted(index)
+        } else {
+            addItemAndNotify(item)
+        }
     }
 
-    fun addItemAtIndexAndNotify(index: Int, item: Any?) {
-        mDataSet.add(index, item)
-        notifyItemInserted(index)
+    fun addToFirst(item: Any?) {
+        addItemAtIndexAndNotify(item, 0)
     }
 
-    fun addItemsAtIndex(items: List<Any?>, index: Int) {
-        mDataSet.addAll(index, items)
+    fun addItemsAtIndexAndNotify(items: List<Any?>, index: Int) {
+        if (index <= mDataSet.size - 1) {
+            mDataSet.addAll(index, items)
+            notifyItemRangeInserted(index, items.size)
+        } else {
+            addItemsAndNotify(items)
+        }
     }
 
     fun removeItemAndNotify(index: Int) {
-        mDataSet.removeAt(index)
-        notifyItemRemoved(index)
+        if (index >= 0 && index <= mDataSet.size - 1) {
+            mDataSet.removeAt(index)
+            notifyItemRemoved(index)
+        }
+    }
+
+    fun removeItemsAndNotify(startPosition: Int, removeItemCount: Int) {
+        if (startPosition >= 0
+            && startPosition <= mDataSet.size - 1
+            && removeItemCount <= mDataSet.size - 1 - startPosition
+        ) {
+           // mDataSet.removA
+        }
+
     }
 
     fun updateItemAndNotify(index: Int, item: Any?) {
-        mDataSet[index] = item
-        notifyItemChanged(index)
+        if (index >= 0 && index <= mDataSet.size - 1) {
+            mDataSet[index] = item
+            notifyItemChanged(index)
+        }
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -104,4 +156,10 @@ abstract class BaseRecyclerViewAdapter(context: Context? = null) :
     }
 
     fun clearData() = mDataSet.clear()
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun clearAndNotify() {
+        mDataSet.clear()
+        notifyDataSetChanged()
+    }
 }

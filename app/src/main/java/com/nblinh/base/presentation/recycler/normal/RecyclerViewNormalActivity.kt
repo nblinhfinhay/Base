@@ -56,11 +56,67 @@ class RecyclerViewNormalActivity : BaseActivity() {
         binding = ActivityRecyclerViewNormalBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-        binding.rvDemo.adapter = adapter
-        binding.swRefresh.setOnRefreshListener {
-            initList()
-            binding.swRefresh.isRefreshing = false
+        binding.apply {
+            rvDemo.adapter = adapter
+            swRefresh.setOnRefreshListener {
+                initList()
+                binding.swRefresh.isRefreshing = false
+            }
+
+            btnAddFirst.setOnClickListener {
+                adapter.addToFirst(DemoItem("Add First"))
+            }
+
+            btnAddLast.setOnClickListener {
+                adapter.addItemAndNotify(DemoItem("Add Last"))
+            }
+
+            btnAddMiddle.setOnClickListener {
+                adapter.addItemAtIndexAndNotify(DemoItem("Add Middle"), 1)
+            }
+
+            btnAddMultiFirst.setOnClickListener {
+                adapter.addItemsAtIndexAndNotify(
+                    listOf(
+                        DemoItem("Content start 1"),
+                        DemoItem("Content start 2"),
+                        DemoItem("Content start 3"),
+                    ), 0
+                )
+            }
+
+            btnAddMultiMiddle.setOnClickListener {
+                adapter.addItemsAtIndexAndNotify(
+                    listOf(
+                        DemoItem("Content middle 1"),
+                        DemoItem("Content middle 2"),
+                        DemoItem("Content middle 3"),
+                    ), 2
+                )
+            }
+
+            btnAddMultiLast.setOnClickListener {
+                adapter.addItemsAndNotify(
+                    listOf(
+                        DemoItem("Content last 1"),
+                        DemoItem("Content last 2"),
+                        DemoItem("Content last 3"),
+                    )
+                )
+            }
+
+
+            btnRemoveMultiFirst.setOnClickListener {
+                adapter.notifyItemRangeRemoved(0, 3)
+            }
+            btnRemoveMultiMiddle.setOnClickListener {
+                adapter.notifyItemRangeRemoved(1, 3)
+            }
+            btnRemoveMultiLast.setOnClickListener {
+                adapter.notifyItemRangeRemoved(2, adapter.itemCount - 1 - 2)
+            }
         }
+
         initList()
     }
 
