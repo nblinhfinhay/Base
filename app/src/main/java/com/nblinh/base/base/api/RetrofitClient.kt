@@ -1,4 +1,4 @@
-package com.nblinh.base.api
+package com.nblinh.base.base.api
 
 import com.nblinh.base.BuildConfig
 import com.nblinh.base.data.remote.api.AuthService

@@ -1,6 +1,6 @@
 package com.nblinh.base.model.user
 
-import com.nblinh.base.api.IConverter
+import com.nblinh.base.base.api.IConverter
 
 class UserInfoDataToUserInfo : IConverter<UserInfoData, UserInfo> {
     override fun convert(source: UserInfoData): UserInfo {

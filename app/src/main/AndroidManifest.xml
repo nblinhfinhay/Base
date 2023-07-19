@@ -40,16 +40,27 @@
             android:configChanges="layoutDirection"
             android:exported="true"
             android:theme="@style/Theme.Light">
+            <!--            <intent-filter>-->
+            <!--                <action android:name="android.intent.action.MAIN" />-->
+
+            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--            </intent-filter>-->
+        </activity>
+
+        <activity android:name=".presentation.CameraActivity" />
+
+        <activity android:name=".presentation.recycler.RecyclerViewActivity" />
+        <activity android:name=".presentation.recycler.load_more.RecyclerViewLoadMoreActivity" />
+        <activity android:name=".presentation.recycler.multi_type.RecyclerViewMultiTypeActivity" />
+        <activity
+            android:name=".presentation.recycler.normal.RecyclerViewNormalActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".presentation.CameraActivity"
-            android:theme="@style/Theme.Light" />
 
         <activity android:name=".presentation.APIActivity" />
 

@@ -1,4 +1,4 @@
-package com.nblinh.base.api
+package com.nblinh.base.base.api
 
 class APIException : Exception {
 

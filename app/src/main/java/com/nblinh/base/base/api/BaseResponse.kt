@@ -1,4 +1,4 @@
-package com.nblinh.base.api
+package com.nblinh.base.base.api
 
 import com.google.gson.annotations.SerializedName
 
@@ -10,16 +10,16 @@ object BaseResponseKey {
 }
 
 open class BaseResponse<T>(
-    @field:SerializedName(BaseResponseKey.STATUS_KEY)
+    @SerializedName(BaseResponseKey.STATUS_KEY)
     var status: Int? = null,
 
-    @field:SerializedName(BaseResponseKey.ERROR_CODE_KEY)
+    @SerializedName(BaseResponseKey.ERROR_CODE_KEY)
     var errorCode: String? = null,
 
-    @field:SerializedName(BaseResponseKey.MESSAGE_KEY)
+    @SerializedName(BaseResponseKey.MESSAGE_KEY)
     var message: String? = null,
 
-    @field:SerializedName(BaseResponseKey.DATA_KEY)
+    @SerializedName(BaseResponseKey.DATA_KEY)
     var data: T? = null
 
 ) {

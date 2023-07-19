@@ -6,6 +6,7 @@ import android.view.View
 import androidx.appcompat.widget.AppCompatTextView
 import com.nblinh.base.R
 import com.nblinh.base.base.BaseActivity
+import com.nblinh.base.presentation.recycler.RecyclerViewActivity
 
 class MainActivity : BaseActivity() {
     private lateinit var tvDemo: AppCompatTextView
@@ -31,6 +32,9 @@ class MainActivity : BaseActivity() {
 
         findViewById<View>(R.id.btnGoToAPIActivity).setOnClickListener {
             startActivity(Intent(this, APIActivity::class.java))
+        }
+        findViewById<View>(R.id.btnGoToRecyclerView).setOnClickListener {
+            startActivity(Intent(this, RecyclerViewActivity::class.java))
         }
     }
 }

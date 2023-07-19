@@ -2,8 +2,8 @@ package com.nblinh.base.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nblinh.base.api.RetrofitClient
-import com.nblinh.base.api.invokeApi
+import com.nblinh.base.base.api.RetrofitClient
+import com.nblinh.base.base.api.invokeApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.SharedFlow
