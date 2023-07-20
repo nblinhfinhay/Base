@@ -22,10 +22,11 @@
         android:id="@+id/ivbDelete"
         android:layout_width="32dp"
         android:layout_height="32dp"
+        android:layout_marginEnd="12dp"
         android:background="?selectableItemBackgroundBorderless"
         android:src="@drawable/ic_delete"
         app:layout_constraintBaseline_toBaselineOf="@id/tvContent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/cbSelect"
         tools:ignore="ContentDescription" />
 
     <ImageButton
@@ -38,5 +39,13 @@
         app:layout_constraintBaseline_toBaselineOf="@id/tvContent"
         app:layout_constraintEnd_toStartOf="@id/ivbDelete"
         tools:ignore="ContentDescription" />
+
+    <CheckBox
+        tools:visibility="visible"
+        android:id="@+id/cbSelect"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        app:layout_constraintBaseline_toBaselineOf="@id/tvContent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

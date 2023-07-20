@@ -30,8 +30,8 @@ class RecyclerViewNormalActivity : BaseActivity() {
                 setPositiveButton(
                     "YES"
                 ) { _, _ ->
-                    val updateItem = DemoItem(edittext.text.toString())
-                    adapter.updateItemAndNotify(position, updateItem)
+                    item.content = edittext.text.toString()
+                    adapter.updateItemAndNotify(position, item, item.content)
                 }
 
                 setNegativeButton(
@@ -114,6 +114,25 @@ class RecyclerViewNormalActivity : BaseActivity() {
             }
             btnRemoveMultiLast.setOnClickListener {
                 adapter.removeItemsFromIndexAndNotify(3)
+            }
+
+            btnShowAllSelected.setOnClickListener {
+                Toast.makeText(
+                    this@RecyclerViewNormalActivity,
+                    adapter.showAllSelected(),
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+            btnClearAllSelected.setOnClickListener {
+                adapter.removeItemAndNotify(DemoItem(content = "ahihi"))
+                while (adapter.checkedHashMap.isNotEmpty()) {
+                    val key = adapter.checkedHashMap.keys.first()
+                    adapter.checkedHashMap[key]?.let {
+                        adapter.removeItemAndNotify(it)
+                    }
+                    adapter.checkedHashMap.remove(key)
+                }
             }
         }
 

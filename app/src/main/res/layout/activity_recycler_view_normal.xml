@@ -25,123 +25,120 @@
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <LinearLayout
-        android:id="@+id/llNone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <Button
-            android:id="@+id/btnAddLast"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="A Last" />
+            app:layout_constraintBottom_toBottomOf="parent">
 
-        <Button
-            android:id="@+id/btnAddFirst"
-            android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btnShowAllSelected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Show All Selected" />
+
+            <Button
+                android:id="@+id/btnClearAllSelected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Clear All Selected" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llNone"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="A First" />
+            app:layout_constraintBottom_toBottomOf="parent">
 
-        <Button
-            android:id="@+id/btnAddMiddle"
-            android:layout_width="wrap_content"
+            <Button
+                android:id="@+id/btnAddLast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="A Last" />
+
+            <Button
+                android:id="@+id/btnAddFirst"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="A First" />
+
+            <Button
+                android:id="@+id/btnAddMiddle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="A Middle" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llFirst"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="A Middle" />
+            app:layout_constraintBottom_toTopOf="@id/llNone">
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/btnAddMultiLast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="A Multi Last" />
+
+            <Button
+                android:id="@+id/btnAddMultiFirst"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="A Multi First" />
+
+            <Button
+                android:id="@+id/btnAddMultiMiddle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="A Multi Middle" />
 
 
-    <LinearLayout
-        android:id="@+id/llFirst"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/llNone">
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/btnAddMultiLast"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/llSecond"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="A Multi Last" />
+            app:layout_constraintBottom_toTopOf="@id/llFirst">
 
-        <Button
-            android:id="@+id/btnAddMultiFirst"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="A Multi First" />
+            <Button
+                android:id="@+id/btnRemoveMultiLast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="R Multi Last" />
 
-        <Button
-            android:id="@+id/btnAddMultiMiddle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="A Multi Middle" />
+            <Button
+                android:id="@+id/btnRemoveMultiFirst"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="R Multi First" />
 
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/llSecond"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/llFirst">
-
-        <Button
-            android:id="@+id/btnRemoveMultiLast"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="R Multi Last" />
-
-        <Button
-            android:id="@+id/btnRemoveMultiFirst"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="R Multi First" />
-
-        <Button
-            android:id="@+id/btnRemoveMultiMiddle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="R Multi Middle" />
+            <Button
+                android:id="@+id/btnRemoveMultiMiddle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="R Multi Middle" />
 
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/llThird"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@id/llSecond">
-
-        <Button
-            android:id="@+id/btnUpdateMultiLast"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="UD Multi Last" />
-
-        <Button
-            android:id="@+id/btnUpdateMultiFirst"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="UD Multi First" />
-
-        <Button
-            android:id="@+id/btnUpdateMultiMiddle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="UD Multi Middle" />
-
-
+        </LinearLayout>
     </LinearLayout>
 
 

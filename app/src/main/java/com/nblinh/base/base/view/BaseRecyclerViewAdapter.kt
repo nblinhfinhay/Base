@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 abstract class BaseRecyclerViewAdapter(context: Context? = null) :
     RecyclerView.Adapter<BaseViewHolder<*>>() {
 
-    private var mDataSet: MutableList<Any?> = arrayListOf()
+    var mDataSet: MutableList<Any?> = arrayListOf()
     var asyncLayoutInflater: AsyncLayoutInflater? = null
 
     init {
@@ -131,6 +131,15 @@ abstract class BaseRecyclerViewAdapter(context: Context? = null) :
         }
     }
 
+    fun removeItemAndNotify(item: Any?) {
+        val indexOfItem = mDataSet.indexOf(item)
+
+        if (indexOfItem != -1) {
+            mDataSet.removeAt(indexOfItem)
+            notifyItemRemoved(indexOfItem)
+        }
+    }
+
     fun removeItemsAndNotify(startPosition: Int, removeItemCount: Int) {
         if (mDataSet.isNotEmpty() && startPosition >= 0 && startPosition <= mDataSet.size - 1 && removeItemCount <= mDataSet.size - startPosition) {
             for (i in 0 until removeItemCount) {
@@ -169,10 +178,10 @@ abstract class BaseRecyclerViewAdapter(context: Context? = null) :
         return x
     }
 
-    fun updateItemAndNotify(index: Int, item: Any?) {
+    fun updateItemAndNotify(index: Int, item: Any?, payloads: Any? = null) {
         if (index >= 0 && index <= mDataSet.size - 1) {
             mDataSet[index] = item
-            notifyItemChanged(index)
+            notifyItemChanged(index, payloads)
         }
     }
 
