@@ -5,12 +5,27 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvDemo"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:itemCount="3"
-        tools:listitem="@layout/item_demo" />
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.airbnb.lottie.LottieAnimationView
+            app:lottie_rawRes="@raw/material_wave_loading"
+            android:layout_width="48dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            android:layout_height="48dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvDemo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:itemCount="3"
+            tools:listitem="@layout/item_demo" />
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
