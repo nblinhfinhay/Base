@@ -46,7 +46,7 @@ abstract class BaseRecyclerViewAdapter(context: Context? = null) :
         }
     }
 
-    abstract fun getLayoutResource(@LayoutRes layoutResourceID: Int): Int
+    abstract fun getLayoutResource(viewType: Int): Int
 
     abstract fun onCreateVH(view: View, viewType: Int): BaseViewHolder<*>
 

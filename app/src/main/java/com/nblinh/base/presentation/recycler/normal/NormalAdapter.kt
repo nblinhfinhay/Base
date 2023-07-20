@@ -21,7 +21,7 @@ class NormalAdapter(context: Context, val itemCallBack: IDemoItem) :
 
     val checkedHashMap: HashMap<Int, DemoItem> = hashMapOf()
 
-    override fun getLayoutResource(layoutResourceID: Int): Int = R.layout.item_demo
+    override fun getLayoutResource(viewType: Int): Int = R.layout.item_demo
 
     override fun onCreateVH(view: View, viewType: Int): BaseViewHolder<*> = NormalVH(view)
 

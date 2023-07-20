@@ -9,8 +9,8 @@
         android:id="@+id/rvDemo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toTopOf="parent"
-        tools:itemCount="3"
-        tools:listitem="@layout/item_demo" />
+        tools:itemCount="3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
