@@ -132,13 +132,41 @@ abstract class BaseRecyclerViewAdapter(context: Context? = null) :
     }
 
     fun removeItemsAndNotify(startPosition: Int, removeItemCount: Int) {
-        if (startPosition >= 0
-            && startPosition <= mDataSet.size - 1
-            && removeItemCount <= mDataSet.size - 1 - startPosition
-        ) {
-           // mDataSet.removA
+        if (mDataSet.isNotEmpty() && startPosition >= 0 && startPosition <= mDataSet.size - 1 && removeItemCount <= mDataSet.size - startPosition) {
+            for (i in 0 until removeItemCount) {
+                mDataSet.removeAt(startPosition)
+            }
+            notifyItemRangeRemoved(startPosition, removeItemCount)
         }
+    }
 
+    fun removeItemsFromToAndNotify(startPosition: Int, endPosition: Int) {
+        val removeItemCount = endPosition - startPosition + 1
+        removeItemsAndNotify(startPosition, removeItemCount)
+    }
+
+    fun removeItemsFromIndexAndNotify(startPosition: Int) {
+        val removeItemCount = mDataSet.size - startPosition
+        removeItemsAndNotify(startPosition, removeItemCount)
+    }
+
+    fun removeItemsTopIndexAndNotify(removeItemCount: Int) {
+        for (i in 0 until removeItemCount) {
+            if (mDataSet.isNotEmpty()) {
+                mDataSet.removeAt(0)
+            } else {
+                break
+            }
+        }
+        notifyItemRangeRemoved(0, removeItemCount)
+    }
+
+    private fun getStringData(): String {
+        var x = ""
+        mDataSet.forEach {
+            x += "${it.toString()} "
+        }
+        return x
     }
 
     fun updateItemAndNotify(index: Int, item: Any?) {

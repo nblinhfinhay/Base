@@ -107,13 +107,13 @@ class RecyclerViewNormalActivity : BaseActivity() {
 
 
             btnRemoveMultiFirst.setOnClickListener {
-                adapter.notifyItemRangeRemoved(0, 3)
+                adapter.removeItemsTopIndexAndNotify(3)
             }
             btnRemoveMultiMiddle.setOnClickListener {
-                adapter.notifyItemRangeRemoved(1, 3)
+                adapter.removeItemsAndNotify(2, 3)
             }
             btnRemoveMultiLast.setOnClickListener {
-                adapter.notifyItemRangeRemoved(2, adapter.itemCount - 1 - 2)
+                adapter.removeItemsFromIndexAndNotify(3)
             }
         }
 
